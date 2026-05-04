@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAML Theme Rule Processor</title>
+    <!-- Using js-yaml library for parsing and dumping YAML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        header {
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            flex: 1;
+            gap: 10px;
+            padding: 10px;
+            overflow: hidden;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-size: 1rem;
+            margin: 0;
+            color: #34495e;
+        }
+        textarea, .diff-container {
+            flex: 1;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 14px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        textarea {
+            resize: none;
+            padding: 10px;
+            background-color: #fff;
+        }
+        .diff-container {
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Diff Line Styles */
+        .diff-line {
+            display: flex;
+            width: 100%;
+            min-height: 20px;
+            line-height: 20px;
+            white-space: pre;
+        }
+
+        .diff-line-number {
+            width: 50px;
+            text-align: right;
+            padding: 0 10px;
+            color: #999;
+            user-select: none;
+            border-right: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .diff-content {
+            padding-left: 10px;
+            flex-grow: 1;
+            overflow-x: auto;
+        }
+
+        /* Visual Injection Highlighting - ONLY insertions */
+        .line-added {
+            background-color: #e6ffed !important;
+        }
+
+        /* The "GitHub" style colors */
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+            padding: 10px;
+            background: #fadbd8;
+            border-radius: 4px;
+            margin-top: 5px;
+            display: none;
+        }
+        .rules-area {
+            border: 2px solid #3498db !important;
+        }
+        .copy-btn {
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        .copy-btn.success { background-color: #27ae60; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 id="mainTitle">YAML Theme Rule Processor</h1>
+</header>
+
+<main>
+    <!-- Left Column: Inputs (YAML and Rules) -->
+    <div class="container" style="flex: 1; display: flex; flex-direction: column;">
+        <div style="flex: 1; display: flex; flex-direction: column; min-height: 0;">
+            <h2 style="margin-bottom:5px">Input YAML</h2>
+            <textarea id="inputYaml" placeholder="Paste your YAML here..."></textarea>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; min-height: 0; margin-top: 10px;">
+            <h2 style="margin-bottom:5px">Rules JSON</h2>
+            <textarea id="rulesJson" class="rules-area" placeholder='[{"Control":"Label","Properties":[{"Color":"varMyTheme.Label.Color"}]}]'></textarea>
+        </div>
+        <div id="errorMessage" class="error"></div>
+    </div>
+
+    <!-- Right Column: Output -->
+    <div class="container">
+        <div class="header-row">
+            <h2>Processed Output (Diff View)</h2>
+            <button id="copyBtn" class="copy-btn">Copy to Clipboard</button>
+        </div>
+        <div class="diff-container" id="diffContainer"></div>
+    </div>
+</main>
+
+<script>
+    const inputArea = document.getElementById('inputYaml');
+    const rulesArea = document.getElementById('rulesJson');
+    const diffContainer = document.getElementById('diffContainer');
+    const errorDiv = document.getElementById('errorMessage');
+    const copyBtn = document.getElementById('copyBtn');
+    let lastProcessedYaml = '';
+
+    function applyRules(obj, rules) {
+        if (typeof obj !== 'object' || obj === null) return;
+        if (Array.isArray(obj)) {
+            obj.forEach(item => applyRules(item, rules));
+            return;
+        }
+
+        for (const key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                const val = obj[key];
+                if (val && typeof val === 'object') {
+                    if (val.Control) {
+                        rules.forEach(rule => {
+                            if (val.Control.startsWith(rule.Control)) {
+                                if (!val.Properties) val.Properties = {};
+                                rule.Properties.forEach(propObj => {
+                                    for (const propName in propObj) {
+                                        if (!Object.prototype.hasOwnProperty.call(val.Properties, propName)) {
+                                            val.Properties[propName] = '=' + propObj[propName];
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    applyRules(val, rules);
+                }
+            }
+        }
+    }
+
+    function processYaml() {
+        const rawYaml = inputArea.value.trim();
+        const rawRules = rulesArea.value.trim();
+        errorDiv.style.display = 'none';
+        diffContainer.innerHTML = '';
+
+        if (!rawYaml) return;
+
+        try {
+            let rules = [];
+            if (rawRules) {
+                try {
+                    rules = JSON.parse(rawRules);
+                    if (!Array.isArray(rules)) throw new Error("Rules must be a JSON array");
+                } catch (e) {
+                    throw new Error("Invalid Rules JSON: " + e.message);
+                }
+            }
+
+        const parsed = jsyaml.load(rawYaml);
+        if (!parsed) return;
+
+        // Normalize original YAML to ensure the diff compares 'apples to apples'
+        const normalizedOldYaml = jsyaml.dump(parsed);
+
+        applyRules(parsed, rules);
+
+        const updatedYaml = jsyaml.dump(parsed);
+        lastProcessedYaml = updatedYaml;
+        renderDiff(normalizedOldYaml, updatedYaml);
+
+        } catch (e) {
+            errorDiv.textContent = e.message;
+            errorDiv.style.display = 'block';
+        }
+    }
+
+    function renderDiff(oldStr, newStr) {
+        const oldLines = oldStr.split('\n').map(l => l.trim());
+        const newLines = newStr.split('\n');
+        diffContainer.innerHTML = '';
+
+        const oldSet = new Set(oldLines);
+        newLines.forEach((line, idx) => {
+            const isAdded = !oldSet.has(line.trim());
+            addDiffLine(idx + 1, line, isAdded ? 'added' : 'unchanged');
+        });
+    }
+
+    function addDiffLine(num, content, type) {
+        const line = document.createElement('div');
+        line.className = 'diff-line';
+        if (type === 'added') line.classList.add('line-added');
+
+        const numDiv = document.createElement('div');
+        numDiv.className = 'diff-line-number';
+        numDiv.textContent = num;
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'diff-content';
+        contentDiv.textContent = content;
+
+        line.appendChild(numDiv);
+        line.appendChild(contentDiv);
+        diffContainer.appendChild(line);
+    }
+
+    copyBtn.addEventListener('click', () => {
+        const textToCopy = lastProcessedYaml;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            copyBtn.textContent = 'Copied!';
+            copyBtn.classList.add('success');
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy to Clipboard';
+                copyBtn.classList.remove('success');
+            }, 2000);
+        });
+    });
+
+    inputArea.addEventListener('input', processYaml);
+    rulesArea.addEventListener('input', processYaml);
+</script>
+</body>
+</html>
