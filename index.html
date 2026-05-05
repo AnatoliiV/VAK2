@@ -1,492 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Power Apps Controls Reference</title>
-</head>
-<body>
+CONTROLS:
 
-    <h1>CONTROLS</h1>
+Screen
+  Props: Fill, Height, LoadingSpinnerColor, OnVisible, Width
 
-    <!-- ===== Screen ===== -->
-    <h2>Screen</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Fill</li>
-        <li>Height</li>
-        <li>LoadingSpinnerColor</li>
-        <li>OnVisible</li>
-        <li>Width</li>
-    </ul>
+Gallery
+  Variant: Vertical | VariableHeight | Horizontal  ← REQUIRED
+  Props: DelayItemLoading, Items, LoadingSpinner, LoadingSpinnerColor, Selectable,
+         ShowNavigation, ShowScrollbar, TemplateFill, TemplatePadding, TemplateSize,
+         Transition, WrapCount
 
-    <!-- ===== Gallery ===== -->
-    <h2>Gallery</h2>
-    <h3>Variant (REQUIRED)</h3>
-    <ul>
-        <li>Vertical</li>
-        <li>VariableHeight</li>
-        <li>Horizontal</li>
-    </ul>
-    <h3>Props</h3>
-    <ul>
-        <li>DelayItemLoading</li>
-        <li>Items</li>
-        <li>LoadingSpinner</li>
-        <li>LoadingSpinnerColor</li>
-        <li>Selectable</li>
-        <li>ShowNavigation</li>
-        <li>ShowScrollbar</li>
-        <li>TemplateFill</li>
-        <li>TemplatePadding</li>
-        <li>TemplateSize</li>
-        <li>Transition</li>
-        <li>WrapCount</li>
-    </ul>
+Label
+  Props: Align, AlignInContainer, AutoHeight, Color, DisabledBorderColor, DisabledFill,
+         Font, FontWeight, HoverBorderColor, HoverColor, HoverFill, Italic,
+         LayoutMaxHeight, LayoutMaxWidth, LayoutMinHeight, LayoutMinWidth, LineHeight,
+         Live, Overflow, PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill, Role, Size, Strikethrough,
+         Text, Tooltip, Underline, VerticalAlign, Wrap
 
-    <!-- ===== Label ===== -->
-    <h2>Label</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Align</li>
-        <li>AlignInContainer</li>
-        <li>AutoHeight</li>
-        <li>Color</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>LayoutMaxHeight</li>
-        <li>LayoutMaxWidth</li>
-        <li>LayoutMinHeight</li>
-        <li>LayoutMinWidth</li>
-        <li>LineHeight</li>
-        <li>Live</li>
-        <li>Overflow</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>Role</li>
-        <li>Size</li>
-        <li>Strikethrough</li>
-        <li>Text</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-        <li>VerticalAlign</li>
-        <li>Wrap</li>
-    </ul>
+GroupContainer
+  Variant: AutoLayout | ManualLayout  ← REQUIRED
+  Props: DropShadow, EnableChildFocus, LayoutAlignItems, LayoutDirection, LayoutGap,
+         LayoutJustifyContent, LayoutOverflowX, LayoutOverflowY, LayoutWrap,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         RadiusBottomLeft, RadiusBottomRight, RadiusTopLeft, RadiusTopRight
 
-    <!-- ===== GroupContainer ===== -->
-    <h2>GroupContainer</h2>
-    <h3>Variant (REQUIRED)</h3>
-    <ul>
-        <li>AutoLayout</li>
-        <li>ManualLayout</li>
-    </ul>
-    <h3>Props</h3>
-    <ul>
-        <li>DropShadow</li>
-        <li>EnableChildFocus</li>
-        <li>LayoutAlignItems</li>
-        <li>LayoutDirection</li>
-        <li>LayoutGap</li>
-        <li>LayoutJustifyContent</li>
-        <li>LayoutOverflowX</li>
-        <li>LayoutOverflowY</li>
-        <li>LayoutWrap</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>RadiusBottomLeft</li>
-        <li>RadiusBottomRight</li>
-        <li>RadiusTopLeft</li>
-        <li>RadiusTopRight</li>
-    </ul>
+Rating
+  Props: Default, Max, OnChange, RatingFill, Reset, ShowValue, Tooltip
 
-    <!-- ===== Rating ===== -->
-    <h2>Rating</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Default</li>
-        <li>Max</li>
-        <li>OnChange</li>
-        <li>RatingFill</li>
-        <li>Reset</li>
-        <li>ShowValue</li>
-        <li>Tooltip</li>
-    </ul>
+Slider
+  Props: Default, DisabledBorderColor, HandleActiveFill, HandleFill, HandleHoverFill,
+         HandleSize, HoverBorderColor, Layout, Max, Min, OnChange, PressedBorderColor,
+         RailFill, RailHoverFill, RailThickness, Reset, ShowValue, Tooltip,
+         ValueFill, ValueHoverFill
 
-    <!-- ===== Slider ===== -->
-    <h2>Slider</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Default</li>
-        <li>DisabledBorderColor</li>
-        <li>HandleActiveFill</li>
-        <li>HandleFill</li>
-        <li>HandleHoverFill</li>
-        <li>HandleSize</li>
-        <li>HoverBorderColor</li>
-        <li>Layout</li>
-        <li>Max</li>
-        <li>Min</li>
-        <li>OnChange</li>
-        <li>PressedBorderColor</li>
-        <li>RailFill</li>
-        <li>RailHoverFill</li>
-        <li>RailThickness</li>
-        <li>Reset</li>
-        <li>ShowValue</li>
-        <li>Tooltip</li>
-        <li>ValueFill</li>
-        <li>ValueHoverFill</li>
-    </ul>
+Classic/Toggle
+  Props: Color, Default, DisabledBorderColor, FalseFill, FalseText, Font, FontWeight,
+         HandleFill, HoverBorderColor, Italic, LabelPaddingLeft, LabelPaddingRight,
+         OnCheck, OnUncheck, PressedBorderColor, Reset, ShowLabel, Size
 
-    <!-- ===== Classic/Toggle ===== -->
-    <h2>Classic/Toggle</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Color</li>
-        <li>Default</li>
-        <li>DisabledBorderColor</li>
-        <li>FalseFill</li>
-        <li>FalseText</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HandleFill</li>
-        <li>HoverBorderColor</li>
-        <li>Italic</li>
-        <li>LabelPaddingLeft</li>
-        <li>LabelPaddingRight</li>
-        <li>OnCheck</li>
-        <li>OnUncheck</li>
-        <li>PressedBorderColor</li>
-        <li>Reset</li>
-        <li>ShowLabel</li>
-        <li>Size</li>
-    </ul>
+Classic/CheckBox
+  Props: CheckboxBackgroundFill, CheckboxSize, CheckmarkFill, Color, Default,
+         DisabledBorderColor, DisabledColor, DisabledFill, Font, FontWeight,
+         HoverBorderColor, HoverColor, HoverFill, Italic, OnCheck, OnUncheck,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill, Reset, Size,
+         Strikethrough, Text, Tooltip, Underline, VerticalAlign, Wrap
 
-    <!-- ===== Classic/CheckBox ===== -->
-    <h2>Classic/CheckBox</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>CheckboxBackgroundFill</li>
-        <li>CheckboxSize</li>
-        <li>CheckmarkFill</li>
-        <li>Color</li>
-        <li>Default</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>OnCheck</li>
-        <li>OnUncheck</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>Reset</li>
-        <li>Size</li>
-        <li>Strikethrough</li>
-        <li>Text</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-        <li>VerticalAlign</li>
-        <li>Wrap</li>
-    </ul>
+Classic/Radio
+  Props: Align, Color, Default, DisabledBorderColor, DisabledColor, DisabledFill,
+         Font, FontWeight, HoverColor, HoverFill, Italic, Layout, LineHeight,
+         OnChange, PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedColor, PressedFill, RadioBackgroundFill, RadioBorderColor,
+         RadioSelectionFill, RadioSize, Reset, Size, Strikethrough, Tooltip, Underline
 
-    <!-- ===== Classic/Radio ===== -->
-    <h2>Classic/Radio</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Align</li>
-        <li>Color</li>
-        <li>Default</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>Layout</li>
-        <li>LineHeight</li>
-        <li>OnChange</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>RadioBackgroundFill</li>
-        <li>RadioBorderColor</li>
-        <li>RadioSelectionFill</li>
-        <li>RadioSize</li>
-        <li>Reset</li>
-        <li>Size</li>
-        <li>Strikethrough</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-    </ul>
+Classic/DatePicker
+  Props: Color, ContentLanguage, DateTimeZone, DefaultDate, DisabledBorderColor,
+         DisabledFill, EndYear, Font, FontWeight, Format, IconBackground, IconFill,
+         InputTextPlaceholder, IsEditable, Italic, Language, OnChange,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop, Reset, Size,
+         StartOfWeek, StartYear, Tooltip
 
-    <!-- ===== Classic/DatePicker ===== -->
-    <h2>Classic/DatePicker</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Color</li>
-        <li>ContentLanguage</li>
-        <li>DateTimeZone</li>
-        <li>DefaultDate</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledFill</li>
-        <li>EndYear</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>Format</li>
-        <li>IconBackground</li>
-        <li>IconFill</li>
-        <li>InputTextPlaceholder</li>
-        <li>IsEditable</li>
-        <li>Italic</li>
-        <li>Language</li>
-        <li>OnChange</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>Reset</li>
-        <li>Size</li>
-        <li>StartOfWeek</li>
-        <li>StartYear</li>
-        <li>Tooltip</li>
-    </ul>
+Classic/ComboBox
+  Props: ChevronBackground, ChevronDisabledBackground, ChevronDisabledFill, ChevronFill,
+         ChevronHoverBackground, ChevronHoverFill, Color, Default, DefaultSelectedItems,
+         DisabledBorderColor, DisabledFill, DisplayFields, Font, FontWeight,
+         HoverBorderColor, HoverFill, InputTextPlaceholder, IsSearchable, Italic, Items,
+         MultiValueDelimiter, NoSelectionText, OnChange, PaddingBottom, PaddingLeft,
+         PaddingRight, PaddingTop, PressedBorderColor, PressedFill, Reset, SearchFields,
+         SelectionFill, SelectionTagColor, SelectionTagFill, SelectMultiple, Size,
+         Tooltip, Underline
 
-    <!-- ===== Classic/ComboBox ===== -->
-    <h2>Classic/ComboBox</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>ChevronBackground</li>
-        <li>ChevronDisabledBackground</li>
-        <li>ChevronDisabledFill</li>
-        <li>ChevronFill</li>
-        <li>ChevronHoverBackground</li>
-        <li>ChevronHoverFill</li>
-        <li>Color</li>
-        <li>Default</li>
-        <li>DefaultSelectedItems</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledFill</li>
-        <li>DisplayFields</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HoverBorderColor</li>
-        <li>HoverFill</li>
-        <li>InputTextPlaceholder</li>
-        <li>IsSearchable</li>
-        <li>Italic</li>
-        <li>Items</li>
-        <li>MultiValueDelimiter</li>
-        <li>NoSelectionText</li>
-        <li>OnChange</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedFill</li>
-        <li>Reset</li>
-        <li>SearchFields</li>
-        <li>SelectionFill</li>
-        <li>SelectionTagColor</li>
-        <li>SelectionTagFill</li>
-        <li>SelectMultiple</li>
-        <li>Size</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-    </ul>
+Classic/DropDown
+  Props: AllowEmptySelection, ChevronBackground, ChevronDisabledBackground,
+         ChevronDisabledFill, ChevronHoverBackground, ChevronHoverFill, Color, Default,
+         DisabledBorderColor, DisabledColor, DisabledFill, Font, FontWeight,
+         HoverBorderColor, HoverColor, HoverFill, Italic, Items, OnChange,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill, Reset,
+         SelectionColor, SelectionFill, Size, Tooltip, Underline, Wrap
 
-    <!-- ===== Classic/Dropdown ===== -->
-    <h2>Classic/Dropdown</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>AllowEmptySelection</li>
-        <li>ChevronBackground</li>
-        <li>ChevronDisabledBackground</li>
-        <li>ChevronDisabledFill</li>
-        <li>ChevronHoverBackground</li>
-        <li>ChevronHoverFill</li>
-        <li>Color</li>
-        <li>Default</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>Items</li>
-        <li>OnChange</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>Reset</li>
-        <li>SelectionColor</li>
-        <li>SelectionFill</li>
-        <li>Size</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-        <li>Wrap</li>
-    </ul>
+Classic/TextInput
+  Props: Align, Clear, Color, DelayOutput, DisabledBorderColor, DisabledColor,
+         EnableSpellCheck, Font, FontWeight, Format, HintText, HoverBorderColor,
+         HoverColor, HoverFill, Italic, LineHeight, MaxLength, Mode, OnChange,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill,
+         RadiusBottomLeft, RadiusBottomRight, RadiusTopLeft, RadiusTopRight,
+         Reset, Size, Tooltip, Underline, VirtualKeyboardMode
 
-    <!-- ===== Classic/TextInput ===== -->
-    <h2>Classic/TextInput</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Align</li>
-        <li>Clear</li>
-        <li>Color</li>
-        <li>DelayOutput</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledColor</li>
-        <li>EnableSpellCheck</li>
-        <li>Font</li>
-        <li>FontWeight</li>
-        <li>Format</li>
-        <li>HintText</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>LineHeight</li>
-        <li>MaxLength</li>
-        <li>Mode</li>
-        <li>OnChange</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>RadiusBottomLeft</li>
-        <li>RadiusBottomRight</li>
-        <li>RadiusTopLeft</li>
-        <li>RadiusTopRight</li>
-        <li>Reset</li>
-        <li>Size</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-        <li>VirtualKeyboardMode</li>
-    </ul>
+Classic/Button
+  Props: Align, AutoDisableOnSelect, Color, DisabledBorderColor, DisabledFill, Font,
+         HoverBorderColor, HoverColor, HoverFill, Italic,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill,
+         RadiusBottomLeft, RadiusBottomRight, RadiusTopLeft, RadiusTopRight,
+         Size, Strikethrough, Text, Tooltip, Underline, VerticalAlign
 
-    <!-- ===== Classic/Button ===== -->
-    <h2>Classic/Button</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>Align</li>
-        <li>AutoDisableOnSelect</li>
-        <li>Color</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Italic</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>RadiusBottomLeft</li>
-        <li>RadiusBottomRight</li>
-        <li>RadiusTopLeft</li>
-        <li>RadiusTopRight</li>
-        <li>Size</li>
-        <li>Strikethrough</li>
-        <li>Text</li>
-        <li>Tooltip</li>
-        <li>Underline</li>
-        <li>VerticalAlign</li>
-    </ul>
+HtmlViewer
+  Props: AutoHeight, Color, DisabledBorderColor, DisabledFill, Font,
+         HoverBorderColor, HtmlText, PaddingBottom, PaddingLeft, PaddingRight,
+         PaddingTop, Size, Tooltip
 
-    <!-- ===== HtmlViewer ===== -->
-    <h2>HtmlViewer</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>AutoHeight</li>
-        <li>Color</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledFill</li>
-        <li>Font</li>
-        <li>HoverBorderColor</li>
-        <li>HtmlText</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>Size</li>
-        <li>Tooltip</li>
-    </ul>
+Rectangle
+  Props: DisabledFill, HoverFill, PressedFill, Tooltip
 
-    <!-- ===== Rectangle ===== -->
-    <h2>Rectangle</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>DisabledFill</li>
-        <li>HoverFill</li>
-        <li>PressedFill</li>
-        <li>Tooltip</li>
-    </ul>
-
-    <!-- ===== Classic/Icon ===== -->
-    <h2>Classic/Icon</h2>
-    <h3>Props</h3>
-    <ul>
-        <li>AutoDisableOnSelect</li>
-        <li>Color</li>
-        <li>DisabledBorderColor</li>
-        <li>DisabledColor</li>
-        <li>DisabledFill</li>
-        <li>HoverBorderColor</li>
-        <li>HoverColor</li>
-        <li>HoverFill</li>
-        <li>Icon</li>
-        <li>PaddingBottom</li>
-        <li>PaddingLeft</li>
-        <li>PaddingRight</li>
-        <li>PaddingTop</li>
-        <li>PressedBorderColor</li>
-        <li>PressedColor</li>
-        <li>PressedFill</li>
-        <li>Rotation</li>
-        <li>Tooltip</li>
-    </ul>
-
-</body>
-</html>
+Classic/Icon
+  Props: AutoDisableOnSelect, Color, DisabledBorderColor, DisabledColor, DisabledFill,
+         HoverBorderColor, HoverColor, HoverFill, Icon,
+         PaddingBottom, PaddingLeft, PaddingRight, PaddingTop,
+         PressedBorderColor, PressedColor, PressedFill, Rotation, Tooltip
